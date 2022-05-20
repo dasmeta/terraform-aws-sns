@@ -33,7 +33,7 @@ locals {
 
 module "subscriptions" {
   source                  = "dasmeta/sns/aws//modules/topic""
-  version                             = "0.0.0.1"
+  version                             = "1.0.1"
   sns_topic_subscriptions = local.sns_topic_subscriptions
 }
 ```
@@ -60,13 +60,13 @@ locals {
 
 module "subscriptions" {
   source                  = "dasmeta/sns/aws//modules/topic""
-  version                             = "0.0.0.1"
+  version                             = "1.0.1"
   sns_topic_subscriptions = local.sns_topic_subscriptions
 }
 ```
 
 ## Protocols for SNS Subscription
-
+```terraform
 `Amazon SQS`
 `AWS Lambda`
 `Email`
@@ -74,6 +74,7 @@ module "subscriptions" {
 `HTTP`
 `HTTPS`
 `SMS`
+```
 
 ## Requirements
 
@@ -101,4 +102,3 @@ module "subscriptions" {
 | <a name="input_create_sns_topic"></a> [create\_sns\_topic](#input\_create\_sns\_topic) | Bool topic | `bool` | `true` | no |
 | <a name="input_sns_topic_subscriptions"></a> [sns\_topic\_subscriptions](#input\_sns\_topic\_subscriptions) | SNS Subscriptions | <pre>list(object({<br>    name                   = string<br>    topic_arn              = string<br>    protocol               = string<br>    endpoint               = string<br>    endpoint_auto_confirms = bool<br>  }))</pre> | `[]` | no |
 | <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | SNS topic name. | `string` | `"topic"` | no |
-
