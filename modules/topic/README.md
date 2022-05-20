@@ -1,4 +1,4 @@
-## HOW to use SNS module with Multiple Subscribers.
+## How to use SNS module with Multiple Subscribers.
 
 ```terraform
 provider "aws" {
