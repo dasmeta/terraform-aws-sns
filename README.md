@@ -1,10 +1,9 @@
-# Why
-Somehow AWS does not have same tooling out of the box compared to GCP.
-Automate creation of Terraform README documentation and format modules before commit to github repo.
+# What is SNS Topic and Subscription
+Amazon Simple Notification Service (Amazon SNS) is a managed service that provides message delivery from publishers to subscribers (also known as producers and consumers). Publishers communicate asynchronously with subscribers by sending messages to a topic, which is a logical access point and communication channel. Clients can subscribe to the SNS topic and receive published messages using a supported endpoint type, such as Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, email, mobile push notifications, and mobile text messages (SMS).
 
 ## How
 Modules to quickly spin up.
-Using terraform-docs and terraform fmt and pre-commit hooks
+Also using terraform-docs and terraform fmt with pre-commit hooks
 
 ## Requirements for pre-commit hooks
 for Run our pre-commit hooks you need to install
