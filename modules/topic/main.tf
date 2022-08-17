@@ -1,6 +1,6 @@
 resource "aws_sns_topic" "this" {
   count = var.create_sns_topic ? 1 : 0
-  name = "${var.topic_name}"
+  name  = var.topic_name
 
   delivery_policy = <<EOF
 {
