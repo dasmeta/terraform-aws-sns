@@ -102,3 +102,40 @@ module "subscriptions" {
 | <a name="input_create_sns_topic"></a> [create\_sns\_topic](#input\_create\_sns\_topic) | Bool topic | `bool` | `true` | no |
 | <a name="input_sns_topic_subscriptions"></a> [sns\_topic\_subscriptions](#input\_sns\_topic\_subscriptions) | SNS Subscriptions | <pre>list(object({<br>    name                   = string<br>    topic_arn              = string<br>    protocol               = string<br>    endpoint               = string<br>    endpoint_auto_confirms = bool<br>  }))</pre> | `[]` | no |
 | <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | SNS topic name. | `string` | `"topic"` | no |
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.50.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.50.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_sns_topic.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_subscription.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create_sns_topic"></a> [create\_sns\_topic](#input\_create\_sns\_topic) | Bool topic | `bool` | `true` | no |
+| <a name="input_sns_topic_subscriptions"></a> [sns\_topic\_subscriptions](#input\_sns\_topic\_subscriptions) | SNS Subscriptions | <pre>list(object({<br>    name                   = string<br>    topic_arn              = string<br>    protocol               = string<br>    endpoint               = string<br>    endpoint_auto_confirms = bool<br>  }))</pre> | `[]` | no |
+| <a name="input_topic_name"></a> [topic\_name](#input\_topic\_name) | SNS topic name. | `string` | `"topic"` | no |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
