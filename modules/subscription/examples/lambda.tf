@@ -14,11 +14,17 @@ module "lambda" {
   # handler       = "index.lambda_handler"
   # runtime       = "python3.8"
 
-  source_path = "../src/lambda-function1"
+  source_path = "./lambda-source"
 }
 
 module "subscription" {
   topic    = "my-topic"
   protocol = "lambda"
   endpotin = "my-lambda1"
+
+  // this is necessary as otherwise resource will not be create
+  depends_on = [
+    module.topic,
+    module.lambda
+  ]
 }
