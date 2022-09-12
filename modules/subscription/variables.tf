@@ -14,3 +14,8 @@ variable "protocol" {
 variable "endpoint" {
   description = "Endpoint of subscription messages will be delivered to (SQS name in case of sqs)."
 }
+
+variable "dead_letter_sqs_name" {
+  description = "Name dead-letter queue for send undeliverable messages."
+  default     = ""
+}

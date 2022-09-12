@@ -3,3 +3,9 @@ data "aws_sqs_queue" "sqs" {
 
   name = var.endpoint
 }
+
+data "aws_sqs_queue" "dead_letter" {
+  count = var.dead_letter_sqs_name == "" ? 0 : 1
+
+  name = var.dead_letter_sqs_name
+}
