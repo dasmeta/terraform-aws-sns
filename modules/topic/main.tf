@@ -1,32 +1,25 @@
 resource "aws_sns_topic" "this" {
-  count = var.create_sns_topic ? 1 : 0
-  name  = var.topic_name
+  count = var.create ? 1 : 0
 
-  delivery_policy = <<EOF
-{
-  "http": {
-    "defaultHealthyRetryPolicy": {
-      "minDelayTarget": 20,
-      "maxDelayTarget": 20,
-      "numRetries": 3,
-      "numMaxDelayRetries": 0,
-      "numNoDelayRetries": 0,
-      "numMinDelayRetries": 0,
-      "backoffFunction": "linear"
-    },
-    "disableSubscriptionOverrides": false,
-    "defaultThrottlePolicy": {
-      "maxReceivesPerSecond": 1
-    }
-  }
+  name            = var.name
+  delivery_policy = jsonencode(var.delivery_policy)
 }
-EOF
+
+data "aws_sns_topic" "this" {
+  count = var.create ? 0 : 1
+
+  name = var.name
 }
 
 resource "aws_sns_topic_subscription" "this" {
-  for_each               = { for i in var.sns_topic_subscriptions : "${i.name}:${i.protocol}:${i.endpoint}" => i }
-  topic_arn              = aws_sns_topic.this[0].arn
+  for_each = { for subscription in var.subscriptions : "${subscription.protocol}:${subscription.endpoint}" => subscription }
+
+  topic_arn              = try(aws_sns_topic.this[0].arn, data.aws_sns_topic.this[0].arn)
   protocol               = each.value.protocol
   endpoint               = each.value.endpoint
   endpoint_auto_confirms = each.value.endpoint_auto_confirms
+
+  redrive_policy = (try(each.value.dead_letter_queue_arn, null) == null) ? null : jsonencode({
+    deadLetterTargetArn = each.value.dead_letter_queue_arn
+  })
 }
