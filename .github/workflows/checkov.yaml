@@ -1,3 +1,4 @@
+
 name:  Checkov
 on:
   pull_request:
@@ -6,14 +7,20 @@ on:
 jobs:
   terraform-validate:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      discussions: write
+      pull-requests: write
+      security-events: write
+      id-token: write
     strategy:
       matrix:
         path:
-          - subscription
-          - topic
+          - modules/topic
+          - modules/subscription     
     steps:
     - uses: dasmeta/reusable-actions-workflows/checkov@main
       with:
         fetch-depth: 0
-        directory: modules/${{ matrix.path }}
       continue-on-error: true
