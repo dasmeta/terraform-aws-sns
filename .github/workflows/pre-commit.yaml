@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Pre-Commit
 on:
   pull_request:
@@ -21,3 +22,21 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         path: modules/${{ matrix.path }}
       continue-on-error: true
+=======
+name:  Pre-Commit
+on:
+  pull_request:
+  push:
+    branches: [main, test-me-*]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v3
+    - name: Run Pre-commit Hook and Post to PR comment
+      uses: dasmeta/reusable-actions-workflows/pre-commit@0.0.7
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d

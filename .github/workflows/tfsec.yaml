@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: TFSEC
+=======
+name:  TFSEC
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
 on:
   pull_request:
   push:
@@ -6,6 +10,7 @@ on:
 jobs:
   terraform-tfsec:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     permissions:
       actions: write
       contents: write
@@ -13,6 +18,8 @@ jobs:
       pull-requests: write
       id-token: write
       security-events: write
+=======
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     steps:
     - uses: dasmeta/reusable-actions-workflows/tfsec@main
       with:

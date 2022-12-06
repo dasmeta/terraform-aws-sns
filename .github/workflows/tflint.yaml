@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 name: Tflint
+=======
+name:  Tflint
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
 on:
   pull_request:
   push:
     branches: [main, master]
+<<<<<<< HEAD
 
 jobs:
   terraform-validate:
@@ -13,19 +18,32 @@ jobs:
       pull-requests: write
       id-token: write
       security-events: write
+=======
+jobs:
+  terraform-validate:
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     runs-on: ubuntu-latest
     strategy:
       matrix:
         path:
+<<<<<<< HEAD
           - modules/topic
           - modules/subscription
      
+=======
+          - topic
+          - subscription
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     steps:
     - uses: dasmeta/reusable-actions-workflows/tflint@main
       with:
         aws-region: ${{ secrets.AWS_REGION}}
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+<<<<<<< HEAD
         path: ${{ matrix.path }}
+=======
+        path: modules/${{ matrix.path }}
+>>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
         repo-token: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
