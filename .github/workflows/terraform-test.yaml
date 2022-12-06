@@ -1,43 +1,27 @@
-<<<<<<< HEAD
-name: Terraform Test
-=======
 name:  Terraform Test
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
 on:
   pull_request:
   push:
     branches: [main, master]
 jobs:
   terraform-validate:
-<<<<<<< HEAD
     permissions:
       actions: write
       contents: write
       discussions: write
       pull-requests: write
       id-token: write
-=======
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     runs-on: ubuntu-latest
     strategy:
       matrix:
         path:
-<<<<<<< HEAD
-          - /
-
-=======
           - topic
           - subscription
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     steps:
     - uses: dasmeta/reusable-actions-workflows/terraform-test@main
       with:
         aws-region: ${{ secrets.AWS_REGION}}
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-<<<<<<< HEAD
-        path: ${{ matrix.path }}
-=======
         path: modules/${{ matrix.path }}
       continue-on-error: true
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
