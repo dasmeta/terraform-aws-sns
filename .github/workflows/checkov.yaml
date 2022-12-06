@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-name: Checkov
-=======
+
 name:  Checkov
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
 on:
   pull_request:
   push:
@@ -10,7 +7,6 @@ on:
 jobs:
   terraform-validate:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
     permissions:
       actions: write
       contents: write
@@ -23,20 +19,8 @@ jobs:
         path:
           - modules/topic
           - modules/subscription     
-=======
-    strategy:
-      matrix:
-        path:
-          - subscription
-          - topic
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
     steps:
     - uses: dasmeta/reusable-actions-workflows/checkov@main
       with:
         fetch-depth: 0
-<<<<<<< HEAD
-        directory: ${{ matrix.path }}
-=======
-        directory: modules/${{ matrix.path }}
->>>>>>> d6255632ff7c49550a7eecf43bc30abe14aef72d
       continue-on-error: true
