@@ -3,6 +3,7 @@ resource "aws_sns_topic" "this" {
 
   name            = var.name
   delivery_policy = jsonencode(var.delivery_policy)
+  policy          = var.policy
 }
 
 data "aws_sns_topic" "this" {
@@ -12,7 +13,7 @@ data "aws_sns_topic" "this" {
 }
 
 resource "aws_sns_topic_subscription" "this" {
-  for_each = { for subscription in var.subscriptions : "${subscription.protocol}:${subscription.endpoint}" => subscription }
+  for_each = { for subscription in var.subscriptions : "${subscription.protocol}:${coalesce(subscription.name, subscription.endpoint)}" => subscription }
 
   topic_arn              = try(aws_sns_topic.this[0].arn, data.aws_sns_topic.this[0].arn)
   protocol               = each.value.protocol
