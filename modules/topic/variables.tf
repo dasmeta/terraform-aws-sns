@@ -9,8 +9,15 @@ variable "create" {
   description = "Whether to create the topic or not"
 }
 
+variable "policy" {
+  type        = string
+  default     = null
+  description = "This policy defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic."
+}
+
 variable "subscriptions" {
   type = list(object({
+    name                   = optional(string, null)
     protocol               = string
     endpoint               = string
     endpoint_auto_confirms = optional(bool, false)
