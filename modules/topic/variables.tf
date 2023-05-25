@@ -25,6 +25,7 @@ variable "subscriptions" {
   }))
   default     = []
   description = "SNS Subscriptions"
+  sensitive   = true
 }
 
 variable "delivery_policy" {
