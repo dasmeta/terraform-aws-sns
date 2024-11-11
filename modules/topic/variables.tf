@@ -41,3 +41,9 @@ variable "delivery_policy" {
     }
   }
 }
+
+variable "policy" {
+  type        = any
+  description = "The SNS Access policy"
+  default     = null
+}

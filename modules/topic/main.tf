@@ -3,6 +3,7 @@ resource "aws_sns_topic" "this" {
 
   name            = var.name
   delivery_policy = jsonencode(var.delivery_policy)
+  policy          = jsonencode(var.policy)
 }
 
 data "aws_sns_topic" "this" {
