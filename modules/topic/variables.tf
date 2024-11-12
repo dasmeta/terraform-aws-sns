@@ -9,12 +9,6 @@ variable "create" {
   description = "Whether to create the topic or not"
 }
 
-variable "policy" {
-  type        = string
-  default     = null
-  description = "This policy defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic."
-}
-
 variable "subscriptions" {
   type = list(object({
     name                   = optional(string, null)
@@ -52,6 +46,6 @@ variable "delivery_policy" {
 
 variable "policy" {
   type        = any
-  description = "The SNS Access policy"
+  description = "This policy defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic."
   default     = null
 }
