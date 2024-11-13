@@ -3,7 +3,7 @@ resource "aws_sns_topic" "this" {
 
   name            = var.name
   delivery_policy = jsonencode(var.delivery_policy)
-  policy          = null //local.sns_policy
+  policy          = local.sns_policy
 }
 
 data "aws_sns_topic" "this" {
