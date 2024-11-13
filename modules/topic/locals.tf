@@ -45,7 +45,7 @@ locals {
           "SNS:ListSubscriptionsByTopic",
           "SNS:Publish"
         ],
-        "Resource" : "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.alarm_actions.topic_name}"
+        "Resource" : "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.name}"
       }
     ]
   }) : jsonencode(var.policy)
