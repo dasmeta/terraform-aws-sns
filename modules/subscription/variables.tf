@@ -6,7 +6,7 @@ variable "protocol" {
   description = "Protocol of subscription (lambda, sqs, ...)."
 
   validation {
-    condition     = can(regex("^lambda$|^sqs$", var.protocol))
+    condition     = can(regex("^lambda$|^https$|^http$|^email-json$|^email$|^sqs$", var.protocol))
     error_message = "Protocol value must be in (lambda, sqs, ...)."
   }
 }
