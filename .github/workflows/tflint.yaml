@@ -1,8 +1,9 @@
-name:  Tflint
+name: Tflint
 on:
   pull_request:
   push:
     branches: [main, master]
+
 jobs:
   terraform-validate:
     permissions:
@@ -16,10 +17,10 @@ jobs:
     strategy:
       matrix:
         path:
-          - modules/topic
-          - modules/subscription
+          - /
+     
     steps:
-    - uses: dasmeta/reusable-actions-workflows/tflint@main
+    - uses: dasmeta/reusable-actions-workflows/tflint@4.2.0
       with:
         aws-region: ${{ secrets.AWS_REGION}}
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
