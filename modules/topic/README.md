@@ -107,10 +107,10 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the topic or not | `bool` | `true` | no |
-| <a name="input_delivery_policy"></a> [delivery\_policy](#input\_delivery\_policy) | The SNS topic delivery policy | `any` | <pre>{<br>  "http": {<br>    "defaultHealthyRetryPolicy": {<br>      "backoffFunction": "linear",<br>      "maxDelayTarget": 20,<br>      "minDelayTarget": 20,<br>      "numMaxDelayRetries": 0,<br>      "numMinDelayRetries": 0,<br>      "numNoDelayRetries": 0,<br>      "numRetries": 3<br>    },<br>    "defaultThrottlePolicy": {<br>      "maxReceivesPerSecond": 1<br>    },<br>    "disableSubscriptionOverrides": false<br>  }<br>}</pre> | no |
+| <a name="input_delivery_policy"></a> [delivery\_policy](#input\_delivery\_policy) | The SNS topic delivery policy | `any` | <pre>{<br/>  "http": {<br/>    "defaultHealthyRetryPolicy": {<br/>      "backoffFunction": "linear",<br/>      "maxDelayTarget": 20,<br/>      "minDelayTarget": 20,<br/>      "numMaxDelayRetries": 0,<br/>      "numMinDelayRetries": 0,<br/>      "numNoDelayRetries": 0,<br/>      "numRetries": 3<br/>    },<br/>    "defaultThrottlePolicy": {<br/>      "maxReceivesPerSecond": 1<br/>    },<br/>    "disableSubscriptionOverrides": false<br/>  }<br/>}</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | SNS topic name. | `string` | n/a | yes |
-| <a name="input_policy"></a> [policy](#input\_policy) | This policy defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. | `string` | `null` | no |
-| <a name="input_subscriptions"></a> [subscriptions](#input\_subscriptions) | SNS Subscriptions | <pre>list(object({<br>    name                   = optional(string, null)<br>    protocol               = string<br>    endpoint               = string<br>    endpoint_auto_confirms = optional(bool, false)<br>    dead_letter_queue_arn  = optional(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_policy"></a> [policy](#input\_policy) | This policy defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. | `any` | `null` | no |
+| <a name="input_subscriptions"></a> [subscriptions](#input\_subscriptions) | SNS Subscriptions | <pre>list(object({<br/>    name                   = optional(string, null)<br/>    protocol               = string<br/>    endpoint               = string<br/>    endpoint_auto_confirms = optional(bool, false)<br/>    dead_letter_queue_arn  = optional(string)<br/>  }))</pre> | `[]` | no |
 
 ## Outputs
 
